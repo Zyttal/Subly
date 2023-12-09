@@ -1,33 +1,123 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:subly_application/widgets/custom_primary_bg_button.dart';
+import 'package:subly_application/widgets/custom_white_bg_button.dart';
+import 'package:subly_application/widgets/input_widget.dart';
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SvgPicture.network(
-            "https://res.cloudinary.com/dbwwffypj/image/upload/v1702136514/Subly_Application/loginTop_zqplxk.svg"),
-        const SizedBox(
-          height: 30,
-        ),
+            "https://res.cloudinary.com/dbwwffypj/image/upload/v1702151534/Subly_Application/Graphical%20Assets/loginRegisTop_yzsjcd.svg"),
         SvgPicture.network(
-            "https://res.cloudinary.com/dbwwffypj/image/upload/v1702136515/Subly_Application/logo_kbeo6w.svg"),
-        Text(
-          "Email Address",
-          style: Theme.of(context).textTheme.labelMedium,
-        ),
-        Container(
-          width: 310,
-          height: 40,
-          decoration: BoxDecoration(
-            color: Color(0xF3F3F3),
+            "https://res.cloudinary.com/dbwwffypj/image/upload/v1702151625/Subly_Application/logo_nhe7ox.svg"),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, right: 40),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                "Email Address",
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const InputWidget(
+                icon: Icons.email,
+                hintText: "Email Address",
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Text(
+                "Password:",
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const InputWidget(
+                icon: Icons.lock,
+                hintText: "Password",
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Row(
+                children: [
+                  CustomWhiteBGButton(
+                    text: "Register",
+                  ),
+                  CustomPrimaryBGButton(
+                    text: "Sign In",
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 100),
+                child: Text(
+                  "or connect with",
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.network(
+                      "https://res.cloudinary.com/dbwwffypj/image/upload/v1702152216/Subly_Application/Icons/Vector-1_oxenyq.svg"),
+                  const SizedBox(
+                    width: 32,
+                  ),
+                  SvgPicture.network(
+                      "https://res.cloudinary.com/dbwwffypj/image/upload/v1702152216/Subly_Application/Icons/Vector_jaed2h.svg"),
+                  const SizedBox(
+                    width: 32,
+                  ),
+                  SvgPicture.network(
+                      "https://res.cloudinary.com/dbwwffypj/image/upload/v1702152216/Subly_Application/Icons/Vector-2_sgq1uw.svg")
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    const Text(
+                      "By Signing in, you are agreeing to our",
+                      style: TextStyle(fontSize: 13),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Terms and Privacy Policy",
+                      style: TextStyle(
+                          fontSize: 12, color: Theme.of(context).primaryColor),
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
         ),
-        Text(
-          "Password:",
-          style: Theme.of(context).textTheme.labelMedium,
-        ),
+        SvgPicture.network(
+            "https://res.cloudinary.com/dbwwffypj/image/upload/v1702151534/Subly_Application/Graphical%20Assets/loginRegisBot_znp9hu.svg"),
       ],
     ));
   }

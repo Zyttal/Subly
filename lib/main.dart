@@ -6,7 +6,7 @@ import 'package:subly_application/pages/login_page.dart';
 
 void main() => runApp(DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) => MainApp(),
+      builder: (context) => const MainApp(),
     ));
 
 class MainApp extends StatelessWidget {
@@ -15,20 +15,24 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = GoogleFonts.poppinsTextTheme(TextTheme(
-        labelMedium: TextStyle(
-      fontSize: 16,
-    )));
+        labelMedium: const TextStyle(
+          fontSize: 16,
+        ),
+        displaySmall:
+            TextStyle(fontSize: 13, color: Theme.of(context).hintColor)));
 
     return MaterialApp(
       title: 'Subly',
       initialRoute: '/',
       routes: {
-        '/': (context) => LoginPage(),
+        '/': (context) => const LoginPage(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        textTheme: textTheme,
-      ),
+          textTheme: textTheme,
+          primaryColor: const Color(0xFF000080),
+          highlightColor: const Color(0xFFFFBD59),
+          hintColor: const Color(0xFF747070)),
     );
   }
 }
