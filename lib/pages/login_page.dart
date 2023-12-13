@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:subly_application/widgets/custom_primary_bg_button.dart';
-import 'package:subly_application/widgets/custom_white_bg_button.dart';
-import 'package:subly_application/widgets/input_widget.dart';
+import 'package:subly_application/widgets/general_widgets/custom_primary_bg_button.dart';
+import 'package:subly_application/widgets/general_widgets/custom_white_bg_button.dart';
+import 'package:subly_application/widgets/general_widgets/input_widget.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -50,10 +50,16 @@ class LoginPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              const Row(
+              Row(
                 children: [
-                  CustomWhiteBGButton(
-                    text: "Register",
+                  InkWell(
+                    borderRadius: BorderRadius.circular(25),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/registration_selection');
+                    },
+                    child: CustomWhiteBGButton(
+                      text: "Register",
+                    ),
                   ),
                   CustomPrimaryBGButton(
                     text: "Sign In",
