@@ -9,7 +9,8 @@ class ItemCardWidget extends StatelessWidget {
     required this.itemStore,
   });
 
-  final String imgURL, itemName, itemPrice, itemStore;
+  final String imgURL, itemName, itemStore;
+  final double itemPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +57,7 @@ class ItemCardWidget extends StatelessWidget {
                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    itemPrice,
+                    "₱$itemPrice",
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,

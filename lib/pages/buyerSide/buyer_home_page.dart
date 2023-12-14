@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:subly_application/pages/navigation_provider.dart';
+import 'package:subly_application/supabase_service.dart';
 import 'package:subly_application/widgets/buyer_side_widgets/buyer_bottom_navbar_widget.dart';
 import 'package:subly_application/widgets/buyer_side_widgets/item_card_widget.dart';
 import 'package:subly_application/widgets/buyer_side_widgets/buyer_search_widget.dart';
@@ -12,6 +13,7 @@ class BuyerHomePage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavigationProvider>(context);
+    final supabaseProvider = Provider.of<SupabaseService>(context);
 
     return Scaffold(
         extendBody: true,
@@ -69,24 +71,30 @@ class BuyerHomePage extends StatelessWidget {
               ),
               SizedBox(
                   height: 150,
-                  child: ListView(
-                    clipBehavior: Clip.none,
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      StoreCardWidget(
-                        imgURL:
-                            "https://res.cloudinary.com/dbwwffypj/image/upload/v1702556187/Subly_Application/Store%20Pictures/robinsons_easymart_yh9jux.png",
-                      ),
-                      StoreCardWidget(
-                          imgURL:
-                              "https://res.cloudinary.com/dbwwffypj/image/upload/v1702556187/Subly_Application/Store%20Pictures/forever_heart_fwaefp.jpg"),
-                      StoreCardWidget(
-                          imgURL:
-                              "https://res.cloudinary.com/dbwwffypj/image/upload/v1702556552/Subly_Application/Store%20Pictures/shopwise_wdbhzb.jpg"),
-                      SizedBox(
-                        width: 25,
-                      ),
-                    ],
+                  child: FutureBuilder<List<Map<String, dynamic>>>(
+                    future: supabaseProvider.fetchSellers(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      } else if (snapshot.hasError) {
+                        return Center(child: Text('Error: ${snapshot.error}'));
+                      } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                        return const Center(child: Text('No data available'));
+                      } else {
+                        final sellers = snapshot.data!;
+                        return ListView.builder(
+                          clipBehavior: Clip.none,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: sellers.length,
+                          padding: EdgeInsets.only(right: 20),
+                          itemBuilder: (context, index) {
+                            final seller = sellers[index];
+                            return StoreCardWidget(
+                                imgURL: seller['store_img_URL']);
+                          },
+                        );
+                      }
+                    },
                   )),
               SizedBox(
                 height: 10,
@@ -105,41 +113,41 @@ class BuyerHomePage extends StatelessWidget {
                       width: 500,
                       height: 450,
                       padding: EdgeInsets.only(top: 10),
-                      child: GridView.count(
-                        clipBehavior: Clip.none,
-                        crossAxisCount: 2,
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        children: [
-                          ItemCardWidget(
-                            imgURL:
-                                "https://res.cloudinary.com/dbwwffypj/image/upload/v1702557450/Subly_Application/Products/Grass_d3rz9k.png",
-                            itemName: "Broccoli (1kg)",
-                            itemPrice: "₱34.75",
-                            itemStore: "Forever Heart",
-                          ),
-                          ItemCardWidget(
-                            imgURL:
-                                "https://res.cloudinary.com/dbwwffypj/image/upload/v1702557449/Subly_Application/Products/Apple_d5k3ws.png",
-                            itemName: "Apple (0.5)",
-                            itemPrice: "₱50.75",
-                            itemStore: "Forever Heart",
-                          ),
-                          ItemCardWidget(
-                            imgURL:
-                                "https://res.cloudinary.com/dbwwffypj/image/upload/v1702557450/Subly_Application/Products/watah_ckhsth.png",
-                            itemName: "Water(500m)",
-                            itemPrice: "₱25.00",
-                            itemStore: "Quickmart oasis",
-                          ),
-                          ItemCardWidget(
-                            imgURL:
-                                "https://res.cloudinary.com/dbwwffypj/image/upload/v1702557449/Subly_Application/Products/carrot_apgdvx.png",
-                            itemName: "Carrots (0.5g)",
-                            itemPrice: "₱34.75",
-                            itemStore: "Forever Heart",
-                          ),
-                        ],
+                      child: FutureBuilder<List<Map<String, dynamic>>>(
+                        future: supabaseProvider.fetchItems(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          } else if (snapshot.hasError) {
+                            return Center(
+                                child: Text('Error: ${snapshot.error}'));
+                          } else if (!snapshot.hasData ||
+                              snapshot.data!.isEmpty) {
+                            return const Center(
+                                child: Text('No data available'));
+                          } else {
+                            final items = snapshot.data!;
+                            return GridView.builder(
+                              padding: EdgeInsets.zero,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                              ),
+                              clipBehavior: Clip.none,
+                              itemCount: items.length,
+                              itemBuilder: (context, index) {
+                                final item = items[index];
+                                return ItemCardWidget(
+                                    imgURL: item['img_URL'],
+                                    itemName: item['item_name'],
+                                    itemPrice: item['item_price'].toDouble(),
+                                    itemStore: item['seller_id']['store_name']);
+                              },
+                            );
+                          }
+                        },
                       ),
                     ),
                   ],
