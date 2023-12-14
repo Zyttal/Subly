@@ -47,6 +47,20 @@ class RegistrationBuyerDetails extends StatelessWidget {
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
                     SizedBox(
+                      height: 15,
+                    ),
+                    InputWidget(
+                      hintText: "",
+                      icon: Icons.mail_outline,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      "Full Name",
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                    SizedBox(
                       height: 10,
                     ),
                     InputWidget(
@@ -96,11 +110,18 @@ class RegistrationBuyerDetails extends StatelessWidget {
                       icon: Icons.lock_outline,
                     ),
                     SizedBox(
-                      height: 45,
+                      height: 25,
                     ),
                     Row(
                       children: [
-                        CustomWhiteBGButton(text: "Cancel"),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(25),
+                          onTap: () {
+                            Navigator.pushReplacementNamed(
+                                context, '/login_page');
+                          },
+                          child: CustomWhiteBGButton(text: "Cancel"),
+                        ),
                         CustomPrimaryBGButton(text: "Submit")
                       ],
                     )

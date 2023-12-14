@@ -4,8 +4,8 @@ import 'package:subly_application/widgets/general_widgets/custom_primary_bg_butt
 import 'package:subly_application/widgets/general_widgets/custom_white_bg_button.dart';
 import 'package:subly_application/widgets/general_widgets/input_widget.dart';
 
-class RegistrationPersonalShopperDetails extends StatelessWidget {
-  const RegistrationPersonalShopperDetails({super.key});
+class RegistrationSellerDetails extends StatelessWidget {
+  const RegistrationSellerDetails({super.key});
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +55,20 @@ class RegistrationPersonalShopperDetails extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
+                  "Owner's Name",
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                InputWidget(
+                  hintText: "",
+                  icon: Icons.person,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
                   "Phone Number",
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
@@ -94,16 +108,11 @@ class RegistrationPersonalShopperDetails extends StatelessWidget {
                   icon: Icons.lock_outline,
                 ),
                 SizedBox(
-                  height: 45,
+                  height: 30,
                 ),
                 Row(
                   children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: CustomWhiteBGButton(text: "Cancel"),
-                    ),
+                    CustomWhiteBGButton(text: "Cancel"),
                     CustomPrimaryBGButton(text: "Submit")
                   ],
                 )

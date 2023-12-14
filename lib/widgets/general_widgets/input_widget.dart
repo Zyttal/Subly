@@ -42,9 +42,9 @@ class InputWidget extends StatelessWidget {
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
-                    hintText: hintText,
-                    border: InputBorder.none,
-                  ),
+                      hintText: hintText,
+                      border: InputBorder.none,
+                      hintStyle: TextStyle(fontSize: 16)),
                 ),
               ),
             ],

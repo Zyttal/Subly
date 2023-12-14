@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:subly_application/effects/fade_page_route.dart';
-import 'package:subly_application/main.dart';
+import 'package:subly_application/stylingsAndEffects/fade_page_route.dart';
 import 'package:subly_application/pages/login_page.dart';
-import 'package:subly_application/services/supabase_service.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:subly_application/supabase_service.dart';
 
 class SplashPage extends StatelessWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -31,7 +31,7 @@ class LoginPage extends StatelessWidget {
               ),
               const InputWidget(
                 icon: Icons.email,
-                hintText: "Email Address",
+                hintText: "",
               ),
               const SizedBox(
                 height: 15,
@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
               ),
               const InputWidget(
                 icon: Icons.lock,
-                hintText: "Password",
+                hintText: "",
               ),
               const SizedBox(
                 height: 30,
@@ -61,8 +61,14 @@ class LoginPage extends StatelessWidget {
                       text: "Register",
                     ),
                   ),
-                  CustomPrimaryBGButton(
-                    text: "Sign In",
+                  InkWell(
+                    borderRadius: BorderRadius.circular(25),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/buyer_home_page');
+                    },
+                    child: CustomPrimaryBGButton(
+                      text: "Sign In",
+                    ),
                   ),
                 ],
               ),
