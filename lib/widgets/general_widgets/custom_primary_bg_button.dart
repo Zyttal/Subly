@@ -19,7 +19,7 @@ class CustomPrimaryBGButton extends StatelessWidget {
       ),
       child: Center(
           child: Text(
-        "Sign In",
+        text,
         style: TextStyle(
             color: Theme.of(context).highlightColor,
             fontWeight: FontWeight.bold),
