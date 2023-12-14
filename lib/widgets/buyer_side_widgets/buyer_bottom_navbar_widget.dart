@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:subly_application/pages/navigation_provider.dart';
 
+import '../../pages/buyerSide/buyer_cart_page.dart';
+import '../../pages/buyerSide/buyer_home_page.dart';
+import '../../pages/buyerSide/buyer_orders_page.dart';
+import '../../pages/buyerSide/buyer_profile_page.dart';
+import '../../stylingsAndEffects/slide_page_route.dart';
+
 class BuyerBottomNavBar extends StatelessWidget {
   const BuyerBottomNavBar({
     super.key,
@@ -23,16 +29,40 @@ class BuyerBottomNavBar extends StatelessWidget {
           navigationProvider.updateSelectedIndex(index);
           switch (index) {
             case 0:
-              Navigator.pushNamed(context, '/buyer_home_page');
+              Navigator.push(
+                context,
+                SlidePageRoute(
+                  builder: (_) => BuyerHomePage(),
+                  settings: const RouteSettings(name: '/buyer_home_page'),
+                ),
+              );
               break;
             case 1:
-              Navigator.pushNamed(context, '/buyer_orders_page');
+              Navigator.push(
+                context,
+                SlidePageRoute(
+                  builder: (_) => BuyersOrdersPage(),
+                  settings: const RouteSettings(name: '/buyer_orders_page'),
+                ),
+              );
               break;
             case 2:
-              Navigator.pushNamed(context, '/buyer_cart_page');
+              Navigator.push(
+                context,
+                SlidePageRoute(
+                  builder: (_) => BuyersCartPage(),
+                  settings: const RouteSettings(name: '/buyer_cart_page'),
+                ),
+              );
               break;
             case 3:
-              Navigator.pushNamed(context, '/buyer_profile_page');
+              Navigator.push(
+                context,
+                SlidePageRoute(
+                  builder: (_) => BuyersProfilePage(),
+                  settings: const RouteSettings(name: '/buyer_profile_page'),
+                ),
+              );
               break;
           }
         },

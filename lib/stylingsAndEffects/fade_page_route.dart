@@ -21,5 +21,5 @@ class FadePageRoute<T> extends PageRouteBuilder<T> {
                   opacity: animation,
                   child: child,
                 ),
-            transitionDuration: Duration(seconds: 1));
+            transitionDuration: const Duration(seconds: 1));
 }
