@@ -5,10 +5,14 @@ class InputWidget extends StatelessWidget {
     super.key,
     required this.icon,
     required this.hintText,
+    required this.controller,
+    required this.isPassword,
   });
 
   final IconData icon;
   final String hintText;
+  final TextEditingController controller;
+  final bool isPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class InputWidget extends StatelessWidget {
       width: 310,
       height: 40,
       decoration: BoxDecoration(
-          color: const Color(0xFFF3F3F3),
+          color: Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.circular(25),
           boxShadow: const [
             BoxShadow(
@@ -41,6 +45,8 @@ class InputWidget extends StatelessWidget {
               ),
               Expanded(
                 child: TextField(
+                  controller: controller,
+                  obscureText: isPassword,
                   decoration: InputDecoration(
                       hintText: hintText,
                       border: InputBorder.none,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:subly_application/pages/navigation_provider.dart';
 import 'package:subly_application/widgets/buyer_side_widgets/buyer_bottom_navbar_widget.dart';
+import '../../providers/navigation_provider.dart';
 
 class BuyersCartPage extends StatelessWidget {
   const BuyersCartPage({super.key});

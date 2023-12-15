@@ -2,7 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:subly_application/pages/navigation_provider.dart';
+import 'package:subly_application/providers/navigation_provider.dart';
 import 'package:subly_application/routes.dart';
 import 'package:subly_application/supabase_service.dart';
 import 'package:subly_application/stylingsAndEffects/theme.dart';

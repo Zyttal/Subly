@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:subly_application/pages/navigation_provider.dart';
 import 'package:subly_application/supabase_service.dart';
 import 'package:subly_application/widgets/buyer_side_widgets/buyer_bottom_navbar_widget.dart';
 import 'package:subly_application/widgets/buyer_side_widgets/item_card_widget.dart';
 import 'package:subly_application/widgets/buyer_side_widgets/buyer_search_widget.dart';
 import 'package:subly_application/widgets/buyer_side_widgets/store_card_widget.dart';
 
+import '../../providers/navigation_provider.dart';
+
 class BuyerHomePage extends StatelessWidget {
   const BuyerHomePage({super.key});
 
+  @override
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavigationProvider>(context);
     final supabaseProvider = Provider.of<SupabaseService>(context);
@@ -132,7 +134,7 @@ class BuyerHomePage extends StatelessWidget {
                             return GridView.builder(
                               padding: EdgeInsets.zero,
                               gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                               ),
                               clipBehavior: Clip.none,

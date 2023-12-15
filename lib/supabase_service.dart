@@ -14,7 +14,6 @@ class SupabaseService with ChangeNotifier {
 
   Future<List<Map<String, dynamic>>> fetchSellers() async {
     final future = _client.from('sellers').select<List<Map<String, dynamic>>>();
-    print(future.toString());
     return future;
   }
 
@@ -22,7 +21,43 @@ class SupabaseService with ChangeNotifier {
     final future = _client
         .from('items')
         .select<List<Map<String, dynamic>>>('*, seller_id:sellers(store_name)');
-    print(future.toString());
     return future;
+  }
+
+  Future<bool> insertBuyer(
+      {required String email,
+      required String fullName,
+      required String phoneNumber,
+      required String homeAddress,
+      required String password}) async {
+    try {
+      await _client.from('buyers').insert([
+        {
+          'email_address': email,
+          'full_name': fullName,
+          'phone_number': phoneNumber,
+          'home_address': homeAddress,
+          'password': password
+        }
+      ]);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  Future<bool> signIn({required String email, required String password}) async {
+    try {
+      await _client
+          .from('buyers')
+          .select()
+          .eq('email_address', email)
+          .eq('password', password)
+          .single();
+
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 }

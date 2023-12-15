@@ -47,10 +47,10 @@ class RegistrationPersonalShopperDetails extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                InputWidget(
-                  hintText: "",
-                  icon: Icons.mail_outline,
-                ),
+                // InputWidget(
+                //   hintText: "",
+                //   icon: Icons.mail_outline,
+                // ),
                 SizedBox(
                   height: 15,
                 ),
@@ -61,10 +61,10 @@ class RegistrationPersonalShopperDetails extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                InputWidget(
-                  hintText: "",
-                  icon: Icons.phone,
-                ),
+                // InputWidget(
+                //   hintText: "",
+                //   icon: Icons.phone,
+                // ),
                 SizedBox(
                   height: 15,
                 ),
@@ -75,10 +75,10 @@ class RegistrationPersonalShopperDetails extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                InputWidget(
-                  hintText: "",
-                  icon: Icons.map_outlined,
-                ),
+                // InputWidget(
+                //   hintText: "",
+                //   icon: Icons.map_outlined,
+                // ),
                 SizedBox(
                   height: 15,
                 ),
@@ -89,10 +89,10 @@ class RegistrationPersonalShopperDetails extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                InputWidget(
-                  hintText: "",
-                  icon: Icons.lock_outline,
-                ),
+                // InputWidget(
+                //   hintText: "",
+                //   icon: Icons.lock_outline,
+                // ),
                 SizedBox(
                   height: 45,
                 ),

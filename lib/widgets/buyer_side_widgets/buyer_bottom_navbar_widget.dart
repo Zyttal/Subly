@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:subly_application/pages/navigation_provider.dart';
+import 'package:subly_application/providers/navigation_provider.dart';
 
 import '../../pages/buyerSide/buyer_cart_page.dart';
 import '../../pages/buyerSide/buyer_home_page.dart';
@@ -29,7 +29,7 @@ class BuyerBottomNavBar extends StatelessWidget {
           navigationProvider.updateSelectedIndex(index);
           switch (index) {
             case 0:
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 SlidePageRoute(
                   builder: (_) => BuyerHomePage(),
@@ -38,7 +38,7 @@ class BuyerBottomNavBar extends StatelessWidget {
               );
               break;
             case 1:
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 SlidePageRoute(
                   builder: (_) => BuyersOrdersPage(),
@@ -47,7 +47,7 @@ class BuyerBottomNavBar extends StatelessWidget {
               );
               break;
             case 2:
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 SlidePageRoute(
                   builder: (_) => BuyersCartPage(),
@@ -56,7 +56,7 @@ class BuyerBottomNavBar extends StatelessWidget {
               );
               break;
             case 3:
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 SlidePageRoute(
                   builder: (_) => BuyersProfilePage(),
