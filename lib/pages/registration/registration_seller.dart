@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:subly_application/widgets/general_widgets/custom_primary_bg_button.dart';
 import 'package:subly_application/widgets/general_widgets/custom_white_bg_button.dart';
-import 'package:subly_application/widgets/general_widgets/input_widget.dart';
 
 class RegistrationSellerDetails extends StatelessWidget {
   const RegistrationSellerDetails({super.key});

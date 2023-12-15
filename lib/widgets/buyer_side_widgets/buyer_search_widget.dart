@@ -18,13 +18,15 @@ class BuyerSearchWidget extends StatelessWidget {
               color: const Color(0xFFAEAEAE),
             ),
             const SizedBox(
-              width: 15,
+              width: 10,
             ),
             Expanded(
               child: TextField(
                 decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintStyle: TextStyle(fontSize: 16)),
+                  border: InputBorder.none,
+                  hintText: 'Search',
+                  hintStyle: TextStyle(fontSize: 16),
+                ),
               ),
             ),
           ],

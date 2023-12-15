@@ -10,12 +10,17 @@ import 'package:subly_application/widgets/buyer_side_widgets/store_card_widget.d
 import '../../providers/navigation_provider.dart';
 
 class BuyerHomePage extends StatelessWidget {
-  const BuyerHomePage({super.key});
+  const BuyerHomePage({super.key, required this.email});
+  final String email;
 
   @override
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavigationProvider>(context);
     final supabaseProvider = Provider.of<SupabaseService>(context);
+    final Map<String, dynamic>? args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+
+    final String receivedEmail = args?['email'] ?? 'No Email Received';
 
     return Scaffold(
         extendBody: true,
@@ -158,7 +163,9 @@ class BuyerHomePage extends StatelessWidget {
             ],
           )),
         ),
-        bottomNavigationBar:
-            BuyerBottomNavBar(navigationProvider: navigationProvider));
+        bottomNavigationBar: BuyerBottomNavBar(
+          navigationProvider: navigationProvider,
+          email: receivedEmail,
+        ));
   }
 }

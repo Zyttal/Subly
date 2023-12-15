@@ -91,12 +91,16 @@ class LoginPage extends StatelessWidget {
 
                             if (signInStatus) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  buildSnackBar("Sign In Successful!", true));
-                              provider.disposeControllers();
-                              Navigator.pushNamed(context, '/buyer_home_page');
+                                  buildSnackBar(
+                                      "Sign In Successful!", true, context));
+                              Navigator.pushNamed(context, '/buyer_home_page',
+                                  arguments: {
+                                    'email': provider.emailController.text
+                                  });
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  buildSnackBar("Sign in Failed!", false));
+                                  buildSnackBar(
+                                      "Sign in Failed!", false, context));
                             }
                           },
                           child: CustomPrimaryBGButton(

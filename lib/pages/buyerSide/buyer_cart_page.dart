@@ -4,15 +4,17 @@ import 'package:subly_application/widgets/buyer_side_widgets/buyer_bottom_navbar
 import '../../providers/navigation_provider.dart';
 
 class BuyersCartPage extends StatelessWidget {
-  const BuyersCartPage({super.key});
-
+  const BuyersCartPage({super.key, required this.email});
+  final String email;
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavigationProvider>(context);
 
     return Scaffold(
-      body: Text("Hello"),
-      bottomNavigationBar:
-          BuyerBottomNavBar(navigationProvider: navigationProvider),
+      body: Text("$email"),
+      bottomNavigationBar: BuyerBottomNavBar(
+        navigationProvider: navigationProvider,
+        email: email,
+      ),
     );
   }
 }

@@ -28,5 +28,5 @@ ThemeData getCustomThemeData(BuildContext context) {
       textTheme: getCustomTextTheme(context),
       primaryColor: const Color(0xFF000080),
       highlightColor: const Color(0xFFFFBD59),
-      hintColor: const Color(0xFF747070));
+      hintColor: const Color(0xFF9397A0));
 }

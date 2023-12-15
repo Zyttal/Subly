@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:subly_application/pages/buyerSide/buyer_cart_page.dart';
+import 'package:subly_application/pages/buyerSide/buyer_edit_profile_page.dart';
 import 'package:subly_application/pages/buyerSide/buyer_home_page.dart';
 import 'package:subly_application/pages/buyerSide/buyer_orders_page.dart';
 import 'package:subly_application/pages/buyerSide/buyer_profile_page.dart';
@@ -20,9 +21,20 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     '/registration_personal_shopper': (context) =>
         RegistrationPersonalShopperDetails(),
     // Buyer Side
-    '/buyer_home_page': (context) => BuyerHomePage(),
-    '/buyer_orders_page': (context) => BuyersOrdersPage(),
-    '/buyer_cart_page': (context) => BuyersCartPage(),
-    '/buyer_profile_page': (context) => BuyersProfilePage()
+    '/buyer_home_page': (context) => BuyerHomePage(
+          email: '',
+        ),
+    '/buyer_orders_page': (context) => BuyersOrdersPage(
+          email: '',
+        ),
+    '/buyer_cart_page': (context) => BuyersCartPage(
+          email: '',
+        ),
+    '/buyer_profile_page': (context) => BuyersProfilePage(
+          email: '',
+        ),
+    '/buyer_edit_profile': (context) => EditBuyerDetails(
+          email: '',
+        )
   };
 }

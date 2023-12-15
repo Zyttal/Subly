@@ -60,4 +60,48 @@ class SupabaseService with ChangeNotifier {
       return false;
     }
   }
+
+  Future<Map<String, dynamic>?> getBuyer(String email) async {
+    try {
+      final response = await _client
+          .from('buyers')
+          .select()
+          .eq('email_address', email)
+          .single();
+      return response;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  Future<bool> updateBuyer(
+      {required String id,
+      required String email,
+      required String fullName,
+      required String phoneNumber,
+      required String homeAddress,
+      required String password}) async {
+    try {
+      await _client.from('buyers').update({
+        'email_address': email,
+        'full_name': fullName,
+        'phone_number': phoneNumber,
+        'home_address': homeAddress,
+        'password': password,
+      }).eq('id', id);
+
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  Future<bool> deleteBuyer(String email) async {
+    try {
+      await _client.from('buyers').delete().eq('email_address', email);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
 }

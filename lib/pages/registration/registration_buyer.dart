@@ -169,14 +169,13 @@ class RegistrationBuyerDetails extends StatelessWidget {
 
                                 if (registrationSuccessful) {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                      buildSnackBar(
-                                          "Registration Successful!", true));
-                                  provider.disposeControllers();
+                                      buildSnackBar("Registration Successful!",
+                                          true, context));
                                   Navigator.pushNamed(context, '/login_page');
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                      buildSnackBar(
-                                          "Registration Failed!", false));
+                                      buildSnackBar("Registration Failed!",
+                                          false, context));
                                 }
                               },
                               child: CustomPrimaryBGButton(text: "Submit"),

@@ -11,9 +11,11 @@ class BuyerBottomNavBar extends StatelessWidget {
   const BuyerBottomNavBar({
     super.key,
     required this.navigationProvider,
+    required this.email,
   });
 
   final NavigationProvider navigationProvider;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +34,11 @@ class BuyerBottomNavBar extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 SlidePageRoute(
-                  builder: (_) => BuyerHomePage(),
-                  settings: const RouteSettings(name: '/buyer_home_page'),
+                  builder: (_) => BuyerHomePage(
+                    email: email,
+                  ),
+                  settings: RouteSettings(
+                      name: '/buyer_home_page', arguments: {'email': email}),
                 ),
               );
               break;
@@ -41,8 +46,11 @@ class BuyerBottomNavBar extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 SlidePageRoute(
-                  builder: (_) => BuyersOrdersPage(),
-                  settings: const RouteSettings(name: '/buyer_orders_page'),
+                  builder: (_) => BuyersOrdersPage(
+                    email: email,
+                  ),
+                  settings: RouteSettings(
+                      name: '/buyer_orders_page', arguments: {'email': email}),
                 ),
               );
               break;
@@ -50,8 +58,11 @@ class BuyerBottomNavBar extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 SlidePageRoute(
-                  builder: (_) => BuyersCartPage(),
-                  settings: const RouteSettings(name: '/buyer_cart_page'),
+                  builder: (_) => BuyersCartPage(
+                    email: email,
+                  ),
+                  settings: RouteSettings(
+                      name: '/buyer_cart_page', arguments: {'email': email}),
                 ),
               );
               break;
@@ -59,8 +70,11 @@ class BuyerBottomNavBar extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 SlidePageRoute(
-                  builder: (_) => BuyersProfilePage(),
-                  settings: const RouteSettings(name: '/buyer_profile_page'),
+                  builder: (_) => BuyersProfilePage(
+                    email: email,
+                  ),
+                  settings: RouteSettings(
+                      name: '/buyer_profile_page', arguments: {'email': email}),
                 ),
               );
               break;
